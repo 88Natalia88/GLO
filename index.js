@@ -11,10 +11,9 @@ let servicePrice2 = +prompt('Сколько это будет стоить?');
 
 let rollback = 12;
 
-let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback/100)));
-
 let allServicePrices,
-    fullPrice;
+    fullPrice,
+    servicePercentPrice;
 
 function showTypeOf(variable){
     console.log(variable, typeof variable);
@@ -36,30 +35,35 @@ function getRollbackMessage(price){
 }
     
 
-function getAllServicePrices(){
+function getAllServicePrices(servicePrice1, servicePrice2){
     allServicePrices = servicePrice1 + servicePrice2;
 }
 
-const getFullPrice = function(){
-    fullPrice = screenPrice + allServicePrices;
+const getFullPrice = function(screenPrice, allServicePrices) {
+    fullPrice =  screenPrice + allServicePrices;
 }
 
-function getTitle(){
-    
+function getTitle(title){
+    title = title.trim();
+    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
 }
+
 function getServicePercentPrices(fun, back){
-    servicePercentPrice = fun - back;
+    servicePercentPrice =  fun - back;
 }
-
-
 
 showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
 
-getAllServicePrices();
-getFullPrice();
-getServicePercentPrices(getFullPrice(), rollback);
+getAllServicePrices(servicePrice1, servicePrice2);
+getFullPrice(screenPrice, allServicePrices);
+getServicePercentPrices(getFullPrice, rollback);
 
+console.log(getTitle(title));
 console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
+console.log(typeof(title));
+console.log(typeof(fullPrice));
+console.log(typeof(adaptive));
+console.log(screens.length);
