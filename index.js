@@ -16,6 +16,26 @@ let servicePercentPrice = Math.ceil(fullPrice - (fullPrice * (rollback/100)));
 let allServicePrices,
     fullPrice;
 
+function showTypeOf(variable){
+    console.log(variable, typeof variable);
+}
+
+function getRollbackMessage(price){
+    switch(true){
+        case price > 30000:
+            return "Даем скидку в 10%";
+        case price > 15000 && price <= 30000:
+            return "Даем скидку в 5%"; 
+        case price <= 15000 && price > 0:
+            return "Скидка не предусмотрена";
+        case price <= 0:
+            return 'Что то пошло не так';
+        default:
+            return 'Ни одно из условий не истинно';
+    }
+}
+    
+
 function getAllServicePrices(){
     allServicePrices = servicePrice1 + servicePrice2;
 }
@@ -31,8 +51,15 @@ function getServicePercentPrices(fun, back){
     servicePercentPrice = fun - back;
 }
 
+
+
+showTypeOf(title);
+showTypeOf(screenPrice);
+showTypeOf(adaptive);
+
 getAllServicePrices();
 getFullPrice();
 getServicePercentPrices(getFullPrice(), rollback);
 
+console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice);
