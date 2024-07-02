@@ -37,10 +37,12 @@ function getRollbackMessage(price){
 
 function getAllServicePrices(servicePrice1, servicePrice2){
     allServicePrices = servicePrice1 + servicePrice2;
+    return allServicePrices;
 }
 
 const getFullPrice = function(screenPrice, allServicePrices) {
     fullPrice =  screenPrice + allServicePrices;
+    return fullPrice;
 }
 
 function getTitle(title){
@@ -50,6 +52,7 @@ function getTitle(title){
 
 function getServicePercentPrices(fun, back){
     servicePercentPrice =  fun - back;
+    return servicePercentPrice;
 }
 
 showTypeOf(title);
@@ -58,11 +61,10 @@ showTypeOf(adaptive);
 
 getAllServicePrices(servicePrice1, servicePrice2);
 getFullPrice(screenPrice, allServicePrices);
-getServicePercentPrices(getFullPrice, rollback);
 
 console.log(getTitle(title));
 console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice);
+console.log(getServicePercentPrices(fullPrice, rollback));
 console.log(typeof(title));
 console.log(typeof(fullPrice));
 console.log(typeof(adaptive));
