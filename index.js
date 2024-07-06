@@ -45,8 +45,7 @@ const getFullPrice = function(screenPrice, allServicePrices) {
 }
 
 function getTitle(title){
-    title = title.trim();
-    return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+    return title.charAt(0).toUpperCase() + title.trim().slice(1).toLowerCase();
 }
 
 function getServicePercentPrices(fun, back){
@@ -60,7 +59,7 @@ showTypeOf(adaptive);
 allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 fullPrice =  getFullPrice(screenPrice, allServicePrices);
 
-console.log(getTitle(title));
+console.log(title = getTitle(title));
 console.log(getRollbackMessage(fullPrice));
 console.log(servicePercentPrice = getServicePercentPrices(fullPrice, rollback));
 console.log(typeof(title));
