@@ -58,10 +58,11 @@ showTypeOf(adaptive);
 
 allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 fullPrice =  getFullPrice(screenPrice, allServicePrices);
+servicePercentPrice = getServicePercentPrices(fullPrice, rollback);
 
 console.log(title = getTitle(title));
 console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice = getServicePercentPrices(fullPrice, rollback));
+console.log(servicePercentPrice);
 console.log(typeof(title));
 console.log(typeof(fullPrice));
 console.log(typeof(adaptive));
