@@ -81,8 +81,9 @@ const appData = {
         return appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
     },
     logger: function(){
-        console.log(appData.fullPrice);
-        console.log(appData.servicePercentPrice);
+        for (let key in appData) {
+            console.log(`${key}: ${appData[key]}`);
+        }
     }
     
 }
