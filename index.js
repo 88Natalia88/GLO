@@ -24,12 +24,25 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num);
     },
 
-    asking : function(){
-        appData.title = prompt('Как называется ваш проект?', "my project");
+    isValidString: function (str) {
+        return typeof str === 'string' && str.trim() !== '' && /[a-zA-Zа-яА-Я]/.test(str);
+    },
 
+    asking : function(){
+        //appData.title = prompt('Как называется ваш проект?', "my project");
+        do {
+            appData.title = prompt('Как называется ваш проект?', "my project");
+        } while (!appData.isValidString(appData.title));
+
+    
         for (let i = 0; i < 2; i++){
-            let name = prompt('Какие типы экранов нужно разработать?');
+            let name = '';
             let price = 0;
+
+            do{
+                name = prompt('Какие типы экранов нужно разработать?');
+            } while (!appData.isValidString(name));
+
             do {
                 price = prompt('Сколько будет стоить данная работа?');
             } while(!appData.isNumber(price));
@@ -39,8 +52,11 @@ const appData = {
         
         for (let i = 0; i < 2; i++){
             let price = 0;
-            let name = prompt('Какой дополнительный тип услуги нужен?');
+            let name = '';
             
+            do{
+                name = prompt('Какой дополнительный тип услуги нужен?');
+            } while(!appData.isValidString(name));
     
             do { price = prompt('Сколько это будет стоить?');
             } while(!appData.isNumber(price));
@@ -101,11 +117,12 @@ const appData = {
     },
 
     logger: function(){
-        for (let key in appData) {
+        /*for (let key in appData) {
             console.log(`${key}: ${appData[key]}`);
-        }
+        }*/
         //console.log(appData.screens);
-        console.log(appData.services);
+        //console.log(appData.services);
+        console.log(typeof appData.title);
     }
     
 }
