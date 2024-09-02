@@ -33,14 +33,31 @@ const appData = {
     count: 0,
     init: function(){
         appData.addTitle();
-        handlerBtnStart.addEventListener('click', appData.start);
+        handlerBtnStart.addEventListener('click', appData.checkError);
         screenBtn.addEventListener('click', appData.addScreenBlock);
         appData.addRollback();
-        appData.checkInputs(); 
+        //appData.checkInputs(); 
     },
     addTitle: function(){
         document.title = title.textContent;
     },
+    checkError: function(){
+        screens = document.querySelectorAll('.screen');
+
+        appData.isError = false;
+
+        screens.forEach(function(screen, index){
+            const select = screen.querySelector('select');
+            const input = screen.querySelector('input');
+            if(select.value === '' || input.value.trim() === ''){
+                appData.isError = true;
+            }
+        })
+        if(!appData.isError){
+            appData.start();
+        }
+    },
+
     start: function(){
         appData.addScreens();
         appData.addServices();
@@ -133,17 +150,17 @@ const appData = {
         console.log(appData.rollback)
     },
 
-    checkInputs: function() {
-        document.body.addEventListener('input', () => {
-            handlerBtnStart.disabled = Array.from(screens).some(screen => {
-                const select = screen.querySelector('select');
-                const input = screen.querySelector('input');
-                return select.value === '' || input.value.trim() === '';
-            });
-        });
+    // checkInputs: function() {
+    //     document.body.addEventListener('input', () => {
+    //         handlerBtnStart.disabled = Array.from(screens).some(screen => {
+    //             const select = screen.querySelector('select');
+    //             const input = screen.querySelector('input');
+    //             return select.value === '' || input.value.trim() === '';
+    //         });
+    //     });
     
-        handlerBtnStart.disabled = true;
-    },
+    //     handlerBtnStart.disabled = true;
+    // },
 
     logger: function(){
         /*for (let key in appData) {
