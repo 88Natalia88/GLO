@@ -154,7 +154,7 @@ const appData = {
     },
 
     updateServicePercentPrice: function() {
-        appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
+        appData.servicePercentPrice = appData.fullPrice + (appData.fullPrice * (appData.rollback / 100));
     },
     // checkInputs: function() {
     //     document.body.addEventListener('input', () => {
