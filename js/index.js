@@ -46,7 +46,7 @@ const appData = {
 
         appData.isError = false;
 
-        screens.forEach(function(screen, index){
+        screens.forEach(function(screen){
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
             if(select.value === '' || input.value.trim() === ''){
@@ -146,10 +146,16 @@ const appData = {
             let inputValue = event.target.value;
             span.textContent = `${inputValue}%`;
             appData.rollback = inputValue;
+
+            appData.updateServicePercentPrice();
+            appData.showResult();
         })
         console.log(appData.rollback)
     },
 
+    updateServicePercentPrice: function() {
+        appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100));
+    },
     // checkInputs: function() {
     //     document.body.addEventListener('input', () => {
     //         handlerBtnStart.disabled = Array.from(screens).some(screen => {
